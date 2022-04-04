@@ -1,0 +1,13 @@
+.cartpage .row {
+  margin: 0;
+}
+
+.cartpage .col-md-8 {
+  padding: 0px 0px 40px 0px;
+  background-color: var(--lightblack);
+}
+
+.cartpage .col-md-4 {
+  padding: 0px 0px 40px 0px;
+  background-color: var(--lightblack);
+}

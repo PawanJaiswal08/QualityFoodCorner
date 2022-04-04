@@ -1,0 +1,49 @@
+.checkout-block {
+  width: 80%;
+  box-sizing: border-box;
+  margin: 8% auto;
+  padding: 8%;
+  background-color: antiquewhite;
+  border-radius: 20px;
+}
+
+.item-total {
+  font-size: 2.4rem;
+}
+
+.bill-details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.checkout-btn {
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+  padding: 8px 10px;
+  border-radius: 25px;
+  border: 2px solid rgb(255, 0, 0);
+  color: white;
+  background-color: #e05d26;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 25px;
+
+  /* max-width: 200px; */
+}
+
+.checkout {
+  margin: 0;
+  padding: 0;
+}
+.checkout-amount {
+  margin: 0;
+  padding: 0;
+}
+.item-qty {
+  box-sizing: border-box;
+  display: inline;
+  margin: 1px 0px;
+  padding: 5px;
+  border: 1px solid;
+}

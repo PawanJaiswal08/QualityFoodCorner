@@ -1,0 +1,945 @@
+openapi: 3.0.0
+info:
+  title: Q.F.C
+  description: Quality Food Corner .
+  version: 0.0.1
+
+servers:
+  - url: http://localhost:8000/api
+    description: localhost environment
+  - url: http://staging-api.example.com
+    description: Optional server description
+
+tags:
+  - name: Quality Food Corner
+    description: API to manage the Quality Food Corner.
+
+components:
+  securitySchemes:
+    APIKey:
+      type: apiKey
+      name: Authorization
+      in: header
+  security:
+    - APIKey: []
+
+definitions:
+  
+  User: 
+    type: object
+    properties:
+      _id: 
+        type: string
+      name:
+        type: string
+      lastname:
+        type: string
+      email:
+        type: string
+      role:
+        type: number
+      address: 
+        type: object
+        properties:
+          _id:
+            type: string
+          mobile: 
+            type: number
+          city: 
+            type: string
+          street: 
+            type: number
+          houseNumber: 
+            type: string
+      cartItems:
+        type: array
+      orders:
+        type: array
+
+  Category: 
+    type: object
+    properties:
+      _id: 
+        type: string
+      name:
+        type: string
+  
+  Product: 
+    type: object
+    properties:
+      _id:
+        type: string
+      name:
+        type: string
+      description:
+        type: string
+      price:
+        type: number
+      category:
+        type: object
+        properties:
+          _id:
+            type: string
+          name:
+            type: string
+      stock:
+        type: number
+      sold:
+        type: number
+      photo:
+        type: string
+      photoUrl: 
+        type: string
+  
+  Store:
+    type: object
+    properties: 
+      _id: 
+        type: string
+      storeId: 
+        type: string
+      location:
+        type: object
+        properties:
+          type:
+            type: string
+          coordinates:
+            type: [number]
+          formattedAddress:
+            type: string
+
+  Developer:
+    type: object
+    properties:
+      _id:
+        type: string
+      name:
+        type: string
+      email:
+        type: string
+      developerImage:
+        type: string
+      facebook:
+        type: string
+      instagram:
+        type: string
+      linkedin:
+        type: string
+      imgUrl:
+        type: string 
+
+  Offer:
+    type: object
+    properties:
+      name:
+        type: string
+      feature1:
+        type: string
+      feature2:
+        type: string
+      feature3:
+        type: string
+      offerImage:
+        type: [string]
+      isActive:
+        type: boolean
+
+paths: 
+
+  /signup:
+    post:
+      tags: [Auth]
+      summary: Signup
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      requestBody:
+        description: Username & Password
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                lastname:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '201':
+          description: User Registered Successfully ...
+        '400':
+          description: Validation Error
+        '422':
+          description: Email already exists
+        '500':
+          description: Internal Server Error
+      
+  /signin:
+    post:
+      tags: [Auth]
+      summary: Signin
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      requestBody:
+        description: Username & Password
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  default: p@gmail.com
+                password:
+                  type: string
+                  default: Pawan@0843
+      responses:
+        '200':
+          description: Signin the user
+        '400':
+          description: Validation Error
+        '500':
+          description: Internal Server Error
+
+  /signout:
+    get:
+      tags: [Auth]
+      summary: Signout
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Signout the user
+        '500':
+          description: Internal Server Error
+
+  /admin/users/{adminId}:
+    get:
+      tags: [Admin]
+      summary: returns all users
+      security: 
+        - APIKey: []
+      parameters:   
+        - in: path
+          name: adminId
+          default: '6195f66e996a1cb655a4d4fc'
+      responses:
+        '200':
+          description: returns all users
+          content: 
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  $ref: '#definitions/User'
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+
+  /admin/user/{adminId}:
+    post:
+      tags: [Admin]
+      summary: Create user by admin
+      security: 
+        - APIKey: []
+      parameters:   
+        - name: adminId
+          default: '6195f66e996a1cb655a4d4fc'
+          in: path
+          schema: 
+            type: string
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      requestBody:
+        description: Enter user details
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                lastname:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '201':
+          description: User created Successfully ...
+        '400':
+          description: Validation Error
+        '422':
+          description: Email already exists
+        '500':
+          description: Internal Server Error
+
+  /admin/user/{adminId}/{usrId}:
+    get:
+      tags: [Admin]
+      summary: returns user by id
+      security: 
+        - APIKey: []
+      parameters:   
+        - name: adminId
+          default: '6195f66e996a1cb655a4d4fc'
+          in: path
+          schema: 
+            type: string
+        - name: usrId
+          default: '61a09520777cbadcdde9f596'
+          in: path
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: returns user by id
+          content: 
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  $ref: '#definitions/User'
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error  
+    
+    put:
+      tags: [Admin]
+      summary: Update User By admin
+      security: 
+        - APIKey: []
+      parameters:   
+        - name: adminId
+          default: '6195f66e996a1cb655a4d4fc'
+          in: path
+          schema: 
+            type: string
+        - name: usrId
+          default: '61a09520777cbadcdde9f596'
+          in: path
+          schema: 
+            type: string
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      requestBody:
+        description: update user by admin
+        required: true
+        content:
+          application/json:
+            schema: 
+              type: array
+              $ref: '#definitions/User'     
+      responses:
+        '201':
+          description: User updated Successfully ...
+        '400':
+          description: Validation Error
+        '500':
+          description: Internal Server Error
+
+    delete:
+      tags: [Admin]
+      summary: Delete User By admin
+      security: 
+        - APIKey: []
+      parameters:   
+        - name: adminId
+          default: '6195f66e996a1cb655a4d4fc'
+          in: path
+          schema: 
+            type: string
+        - name: usrId
+          default: '61a09520777cbadcdde9f596'
+          in: path
+          schema: 
+            type: string
+      produces:
+        - application/json
+      responses:
+        '201':
+          description: User deleted Successfully ...
+        '400':
+          description: Validation Error
+        '500':
+          description: Internal Server Error
+
+  /user/{userId}:
+    get:
+      tags:
+        - User
+      summary: returns user by Id
+      security: 
+        - APIKey: []
+      parameters:   
+        - in: path
+          name: userId
+          default: '6195f66e996a1cb655a4d4fc'
+      responses:
+        '200':
+          description: returns user based on ID
+          content: 
+            application/json:
+              schema: 
+                $ref: '#definitions/User'
+
+    put:
+      tags:
+        - User
+      summary: update user address
+      security: 
+        - APIKey: []
+      parameters:   
+        - in: path
+          name: userId
+          default: '6195f66e996a1cb655a4d4fc'
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      requestBody:
+        description: update a user
+        required: true
+        content:
+          application/json:
+            schema: 
+              type: array
+              $ref: '#definitions/User'
+      responses:
+        '200':
+          description: Ok
+          content: 
+            application/json:
+              schema: 
+                $ref: '#definitions/User'
+
+  /categories:
+    get:
+      tags: [Category]
+      summary: returns all categories
+      responses:
+        '200':
+          description: returns all categories
+          content: 
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  $ref: '#definitions/Category'
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+
+  /category/{catergory}:
+    get:
+      tags: [Category]
+      summary: Returns Category By Id or Name
+      parameters: 
+        - name: catergory
+          default: '619cb6bddafcf9142ec6f52a'
+          in: path
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: returns category by id
+          content: 
+            application/json:
+              schema: 
+                $ref: '#definitions/Category'
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+
+  /category/{userId}:
+    post:
+      tags: [Category]
+      summary: add a category by admin
+      security: 
+        - APIKey: []
+      parameters: 
+        - name: userId
+          default: '6195f66e996a1cb655a4d4fc'
+          in: path
+          schema: 
+            type: string
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      requestBody:
+        description: 
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+      responses:
+        '201':
+          description: User Registered Successfully ...
+        '400':
+          description: Validation Error
+        '500':
+          description: Internal Server Error
+
+  /category/{catergoryId}/{userId}:
+    put:
+      tags: [Category]
+      summary: update a category
+      security: 
+        - APIKey: []
+      parameters:  
+        - name: catergoryId
+          default: '619cb6bddafcf9142ec6f52a'
+          in: path
+          schema: 
+            type: string
+          collectionFormat: multi
+        - name: userId
+          default: '6195f66e996a1cb655a4d4fc'
+          in: path
+          schema: 
+            type: string
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      requestBody:
+        description: update a category
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string    
+      responses:
+        '201':
+          description: Category updated Successfully ...
+        '400':
+          description: Validation Error
+        '500':
+          description: Internal Server Error
+    
+    delete:
+      tags: [Category]
+      summary: Delete a Category
+      security: 
+        - APIKey: []
+      parameters:  
+        - name: CategoryId
+          default: '619cb6bddafcf9142ec6f52a'
+          in: path
+          schema:
+            type: string
+          collectionFormat: multi
+        - name: userId
+          default: '6195f66e996a1cb655a4d4fc'
+          in: path
+          schema: 
+            type: string
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '201':
+          description: Category Deleted Successfully ...
+        '400':
+          description: Validation Error
+        '500':
+          description: Internal Server Error
+  
+  /products:
+    get:
+      tags: [Product]
+      summary: returns all products
+      responses:
+        '200':
+          description: returns all categories
+          content: 
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  $ref: '#definitions/Product'
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+  
+  /product/{product}:
+    get:
+      tags: [Product]
+      summary: returns product by Id
+      parameters: 
+        - name: product
+          default: '619cc8507ec03d2d764e0c9b'
+          in: path
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: returns product by Id or Name
+          content: 
+            application/json:
+              schema: 
+                $ref: '#definitions/Product'
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+
+  /product/{userId}:
+    post:
+      tags: [Product]
+      summary: add a product
+      security: 
+        - APIKey: []
+      parameters: 
+        - name: userId
+          default: '6195f66e996a1cb655a4d4fc'
+          in: path
+          schema: 
+            type: string
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      requestBody:
+        description: add a product
+        required: true
+        content:
+          application/json:
+            schema: 
+              $ref: '#definitions/Product'
+              properties:
+                name:
+                  type: string
+      responses:
+        '201':
+          description: Product added Successfully ...
+        '400':
+          description: Validation Error
+        '500':
+          description: Internal Server Error
+
+  /product/{productId}/{userId}:
+    put:
+      tags: [Product]
+      summary: Update a Product
+      security: 
+        - APIKey: []
+      parameters:  
+        - name: productId
+          default: '619cc8507ec03d2d764e0c9b'
+          in: path
+          schema: 
+            type: string
+          collectionFormat: multi
+        - name: userId
+          default: '6195f66e996a1cb655a4d4fc'
+          in: path
+          schema: 
+            type: string
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      requestBody:
+        description: update a Product
+        required: true
+        content:
+          application/json:
+            schema: 
+              type: array
+              $ref: '#definitions/Product'     
+      responses:
+        '201':
+          description: Product updated Successfully ...
+        '400':
+          description: Validation Error
+        '500':
+          description: Internal Server Error
+
+    delete:
+      tags: [Product]
+      summary: Delete a Product
+      security: 
+        - APIKey: []
+      parameters:  
+        - name: productId
+          default: '619cc8507ec03d2d764e0c9b'
+          in: path
+          schema: 
+            type: string
+          collectionFormat: multi
+        - name: userId
+          default: '6195f66e996a1cb655a4d4fc'
+          in: path
+          schema: 
+            type: string
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '201':
+          description: Product Deleted Successfully ...
+        '400':
+          description: Validation Error
+        '500':
+          description: Internal Server Error
+
+  /stores:
+    get:
+      tags: [Store]
+      summary: Returns all stores
+      responses:
+        '200':
+          description: returns all stores 
+          content:
+            application/json:
+              schema:
+                $ref: '#definitions/Store'
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+  
+  /store/{userId}:
+    post: 
+      tags: [Store]
+      summary: Return store by id
+      parameters:
+        - name: userId
+          default: '61c0229ae7d5b1046c3d90a7'
+          in: path
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: returns store by id
+          content: 
+            application/json:
+              schema: 
+                $ref: '#definitions/Store'
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+
+  /developers:
+    get:
+      tags: [Developer]
+      summary: returns all Developers
+      responses:
+        '200':
+          description: returns all Developers
+          content: 
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  $ref: '#definitions/Developer'
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+
+  /developers/{developerId}:
+    get:
+      tags: [Developer]
+      summary: returns a developer by Id
+      parameters: 
+        - name: developerId
+          default: '619cc8507ec03d2d764e0c9b'
+          in: path
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: returns a Developer by Id
+          content: 
+            application/json:
+              schema: 
+                $ref: '#definitions/Developer'
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+
+  /developers/{userId}:
+    post:
+      tags: [Developer]
+      summary: Create a developer by Admin
+      security: 
+        - APIKey: []
+      parameters: 
+        - name: userId
+          default: '6195f66e996a1cb655a4d4fc'
+          in: path
+          schema: 
+            type: string
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      requestBody:
+        description: Create a developer by Admin
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#definitions/Developer'
+      responses:
+        '201':
+          description: Developer Created successfully...
+        '400':
+          description: Validation Error
+        '500':
+          description: Internal Server Error
+  
+  /offers:
+    get:
+      tags: [Offer]
+      summary: returns all offers
+      responses:
+        '200':
+          description: returns all offers
+          content: 
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  $ref: '#definitions/Offer'
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+
+  /offer/{userId}:
+    post:
+      tags: [Offer]
+      summary: add a offer
+      security: 
+        - APIKey: []
+      parameters: 
+        - name: userId
+          default: '6195f66e996a1cb655a4d4fc'
+          in: path
+          schema: 
+            type: string
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      requestBody:
+        description: add a offer
+        required: true
+        content:
+          application/json:
+            schema: 
+              $ref: '#definitions/Offer'
+              properties:
+                name:
+                  type: string
+      responses:
+        '201':
+          description: Offer added Successfully ...
+        '400':
+          description: Validation Error
+        '500':
+          description: Internal Server Error
+
+  /offer/{offerId}/{userId}:
+    put:
+      tags: [Offer]
+      summary: Update a offer
+      security: 
+        - APIKey: []
+      parameters:  
+        - name: offerId
+          default: '61d07f4ff96d44dd50ab097a'
+          in: path
+          schema: 
+            type: string
+          collectionFormat: multi
+        - name: userId
+          default: '6195f66e996a1cb655a4d4fc'
+          in: path
+          schema: 
+            type: string
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      requestBody:
+        description: update a Offer
+        required: true
+        content:
+          application/json:
+            schema: 
+              type: array
+              $ref: '#definitions/Offer'     
+      responses:
+        '201':
+          description: Offer updated Successfully ...
+        '400':
+          description: Validation Error
+        '500':
+          description: Internal Server Error
+
+    delete:
+      tags: [Offer]
+      summary: Delete a Offer
+      security: 
+        - APIKey: []
+      parameters:  
+        - name: offerId
+          default: '61d07f4ff96d44dd50ab097a'
+          in: path
+          schema: 
+            type: string
+          collectionFormat: multi
+        - name: userId
+          default: '6195f66e996a1cb655a4d4fc'
+          in: path
+          schema: 
+            type: string
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '201':
+          description: Offer Deleted Successfully ...
+        '400':
+          description: Validation Error
+        '500':
+          description: Internal Server Error

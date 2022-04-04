@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+.navbar {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--darkblack);
+  background-image: linear-gradient(var(--darkblack), var(--lightblack));
+  color: #bbbbbb;
+}
+
+.brand-title {
+  text-decoration: none;
+  list-style: none;
+  color: var(--darkyellow);
+  padding-left: 25px;
+}
+
+a.custom-card,
+a.custom-card:hover {
+  color: inherit;
+}
+
+.fa {
+  margin-right: 6px;
+}
+
+.fas {
+  margin-right: 6px;
+}
+
+.fab {
+  margin-right: 6px;
+}
+
+.brand-title {
+  font-size: 1.5rem;
+  margin: 0.5rem;
+}
+
+.navbar-links {
+  height: 100%;
+  padding-right: 20px;
+}
+
+.navbar-links ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links li {
+  list-style: none;
+}
+
+.navbar-links li a, span {
+  display: block;
+  text-decoration: none;
+  color: #bbbbbb;
+  padding: 0.1rem 1rem;
+  cursor: pointer;
+}
+
+.navbar-links li a:hover {
+  color: var(--darkyellow);
+}
+
+.navbar-links li span:hover {
+  color: var(--darkyellow);
+}
+
+.toggle-button {
+  position: absolute;
+  top: 1.5rem;
+  right: 1rem;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+}
+
+.toggle-button .bar {
+  height: 3px;
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.buttttt{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  float: left;
+}
+.toggle-buttonn {
+  cursor: pointer;
+  display: flex;
+  position: absolute;
+  top: 1.5rem;
+  right: 1rem;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+}
+
+.toggle-buttonn .bar-white {
+  height: 3px;
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+}
+
+@media (max-width: 800px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .toggle-button {
+    display: flex;
+  }
+
+  .toggle-buttonn {
+    display: flex;
+  }
+
+  .navbar-links {
+    display: none;
+    width: 100%;
+  }
+
+  .navbar-links li a {
+    color: rgb(255, 255, 255);
+    padding: 1rem;
+  }
+
+  .navbar-links ul {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .navbar-links ul li {
+    text-align: center;
+  }
+
+  .navbar-links ul li a {
+    padding: 0.5rem 1rem;
+  }
+
+  .navbar-links.active {
+    display: flex;
+  }
+}

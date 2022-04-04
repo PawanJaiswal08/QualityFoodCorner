@@ -1,0 +1,142 @@
+.prodCartItem {
+  --primary: #e05d26;
+  --grey: #454545;
+  --lightgrey: #666;
+  width: 100%;
+  color: var(--grey);
+  line-height: 1.55;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  padding: 20px 40px;
+}
+
+.recipe-cart {
+  border: 2px solid var(--darkyellow);
+  border-radius: 25px;
+  width: 700px;
+  padding: 1px;
+}
+
+.recipe-cart {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background-color: antiquewhite;
+}
+
+.pizza-box-cart {
+  max-width: 200px;
+  max-height: 200px;
+  height: 200px;
+  width: 200px;
+  overflow: hidden;
+  border-radius: 25px 25px;
+  border: 2px solid var(--darkyellow);
+}
+
+.pizza-box-cart img {
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+  border-radius: 25px 25px;
+  border: 2px solid var(--darkyellow);
+}
+
+.recipe-content-cart {
+  margin: 0;
+  padding: 0 20px;
+  max-width: calc(100% - 200px);
+  width: 100%;
+  align-items: flex-start;
+}
+
+.recipe-title-cart {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 10px 2px;
+  font-size: 1.5rem;
+  font-family: "Roboto Slab", Helvetica, Arial, sans-serif;
+}
+.recipe-title-cart span {
+  padding: 20px 0px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.recipe-title-cart i{
+  padding: 20px 0px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align: center;
+}
+
+.minus{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align: center;
+}
+
+.recipe-metadata {
+  margin: 0;
+}
+
+.addcart {
+  border-radius: 25px;
+  padding: 0px 20px;
+}
+
+.addcart:hover {
+  color: white;
+  background-color: #e05d26;
+}
+
+.try {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 2px;
+}
+
+.recipe-control {
+  display: flex;
+  align-items: center;
+  /* padding: 6px 14px 6px 12px; */
+  /* border-radius: 25px; */
+  /* border: 2px solid currentColor; */
+  color: var(--primary);
+  background: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.item-qty {
+  align-items: center;
+  margin: auto;
+  padding: auto;
+  width: 30px;
+}
+
+.recipe-control .control-btn {
+  align-items: center;
+  margin: auto;
+  padding: auto;
+  border: 1px solid;
+  border-radius: 50%;
+  width: 30px;
+}
+
+.recipe-control .i {
+  margin: 0;
+  padding: 0;
+}
+
+.recipe-title-cart button {
+  padding: 0px !important;
+  margin: 0px !important;
+  background: transparent !important;
+  border: 0px !important;
+}

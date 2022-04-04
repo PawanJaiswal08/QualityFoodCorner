@@ -1,0 +1,53 @@
+.bodyy .py-4 {
+  background-color: var(--lightblack) !important;
+  color: var(--lightgrey);
+}
+
+.carousel {
+  margin-left: auto;
+  margin-right: auto;
+  width: 95% !important;
+}
+
+.heading {
+  color: var(--darkyellow);
+  font-family: system-ui;
+}
+
+.lists {
+  font-family: cursive;
+}
+
+.p-3 {
+  padding: 0.5rem !important;
+}
+
+.rec.rec-arrow-left,
+.rec.rec-arrow-right {
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 244, 147);
+}
+
+.rec.rec-arrow-left:hover:enabled,
+.rec.rec-arrow-right:hover:enabled {
+  background-color: rgb(0, 0, 0);
+  /* box-shadow: 0 0 1px 3px white; */
+}
+
+.rec.rec-arrow-left:focus:enabled,
+.rec.rec-arrow-right:focus:enabled {
+  background-color: rgb(0, 0, 0);
+  /* box-shadow: 0 0 1px 3px white; */
+}
+
+button.rec-dot {
+  background-color: rgb(209, 209, 209);
+  box-shadow: 0 0 1px 1px white;
+}
+
+button.rec-dot:hover,
+button.rec-dot:active,
+button.rec-dot:focus {
+  background-color: rgb(209, 209, 209);
+  box-shadow: 0 0 1px 1px white;
+}
