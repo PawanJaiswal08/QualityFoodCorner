@@ -15109,3 +15109,5 @@
 [2022-04-04 23:20:04] localhost GET /api/user/624b2e6f7d70f9a345ff6018 200 - 217.403 ms 
 [2022-04-04 23:20:31] localhost POST /api/signin 200 - 217.504 ms 
 [2022-04-04 23:21:33] localhost PUT /api/user/624b2e6f7d70f9a345ff6018 200 - 448.646 ms 
+[2022-04-04 23:24:37] localhost GET /api/products 304 - 916.112 ms 
+[2022-04-04 23:24:46] localhost GET /api/product/619cc8507ec03d2d764e0c9b 200 - 649.084 ms 
