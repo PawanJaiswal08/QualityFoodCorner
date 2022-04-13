@@ -1,0 +1,11 @@
+[2022-03-09 21:23:09] localhost GET / 200 - 3.361 ms 
+[2022-03-09 21:23:09] localhost GET /favicon.ico 404 - 2.522 ms 
+[2022-03-09 21:24:03] localhost GET /api/ 404 - 2.034 ms 
+[2022-03-09 21:25:45] localhost GET /api/categories 200 - 254.893 ms 
+[2022-03-09 21:29:14] localhost GET /api/banner/61efca070a166ac15f35c6f9 200 - 1266.564 ms 
+[2022-03-09 21:29:15] localhost GET /api/offer/all 200 - 2521.137 ms 
+[2022-03-09 21:29:41] localhost GET /api/banner/61efca070a166ac15f35c6f9 304 - 1443.071 ms 
+[2022-03-09 21:29:43] localhost GET /api/offer/all 304 - 3021.257 ms 
+[2022-03-09 21:29:50] localhost GET /api/banner/61efca070a166ac15f35c6f9 304 - 2137.941 ms 
+[2022-03-09 21:29:50] localhost GET /api/offer/all 304 - 2880.119 ms 
+[2022-03-09 21:30:10] localhost GET /api/products 200 - 785.990 ms 

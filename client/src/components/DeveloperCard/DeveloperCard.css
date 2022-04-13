@@ -1,0 +1,152 @@
+.bada {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  background-image: linear-gradient(var(--lightblack),var(--darkblack));
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+}
+
+section {
+  position: relative;
+}
+
+section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  clip-path: circle(30% at right 70%);
+}
+
+section::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  clip-path: circle(20% at 10% 10%);
+}
+
+.container {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 40px 0;
+}
+
+.container .card {
+  position: relative;
+  width: 300px;
+  height: 400px;
+  background: rgba(255, 255, 255, 0.5);
+  margin: 40px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+}
+
+.container .card .content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  opacity: 0.9;
+  transition: 0.5s;
+}
+
+.container .card .content img {
+  border-radius: 15px;
+}
+
+.container .card:hover .content {
+  opacity: 1;
+  transform: translateY(-20px);
+}
+
+.container .card:hover .content .imgBx {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 10px solid rgba(0, 0, 0, 0.25);
+}
+
+.container .card:hover .content .imgBx img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.container .card .content .contentBx h3 {
+  color: black;
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin: 20px;
+  text-align: center;
+}
+
+.container .card .content .contentBx h3 .subheading {
+  color: black;
+  margin: 20px;
+  font-size: 0.8rem;
+}
+
+.container .card:hover .content .contentBx h3 {
+  color: black;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 1.2rem;
+  text-align: center;
+  margin: 20px 0px 10px;
+  line-height: 1.1em;
+}
+
+.container .card:hover .content .contentBx h3 span {
+  margin: 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: initial;
+}
+
+.container .card .sci {
+  margin-top: 20px;
+  position: absolute;
+  bottom: 30px;
+  display: flex;
+}
+
+.container .card .sci li {
+  list-style: none;
+  margin: 0 10px;
+  transform: translateY(40px);
+  transition: 0.5s;
+  opacity: 0;
+  transition-delay: calc(0.1s * var(--i));
+}
+
+.container .card:hover .sci li {
+  transform: translateY(0px);
+  opacity: 1;
+}
+
+.container .card .sci li a {
+  font-size: 24px;
+}

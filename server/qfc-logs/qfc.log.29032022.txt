@@ -1,0 +1,2 @@
+[2022-03-29 17:27:06] localhost GET /api/offers 304 - 2251.999 ms 
+[2022-03-29 17:27:17] localhost GET /api/banner/61efca070a166ac15f35c6f9 304 - 13800.119 ms 

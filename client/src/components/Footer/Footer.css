@@ -1,0 +1,105 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+.footer {
+  margin: 0;
+  padding: 0;
+  padding: 4% 10% 2% 12%;
+  /* margin-top: 228px; */
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  text-transform: capitalize;
+  font-size: 1rem;
+  color: #bbbbbb;
+  background-color: var(--darkblack);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.row ul {
+  list-style: none;
+}
+
+.footer .footer-col {
+  width: 25%;
+  padding: 20px 20px 20px 20px;
+}
+
+.footer-col ul {
+  padding: 0px 0px 0px 0px;
+}
+
+.footer .footer-col h4 {
+  font-size: 1.2rem;
+  color: #ffffff;
+  text-transform: capitalize;
+  margin-bottom: 35px;
+  font-weight: 500;
+  position: relative;
+}
+
+.footer .footer-col li a {
+  color: #bbbbbb;
+}
+
+.footer-col h4::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  background-color: var(--darkyellow);
+  height: 2px;
+  box-sizing: border-box;
+  width: 50px;
+}
+
+.footer-col ul li:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+  font-size: 16px;
+  text-transform: capitalize;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 300;
+  color: #bbbbbb;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+  color: #bbbbbb;
+  padding-left: 8px;
+}
+
+.footer-col .social-links a {
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: 0 10px 10px 0;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%;
+  color: #bbbbbb;
+  transition: all 0.5s ease;
+}
+
+.footer-col .social-links a:hover {
+  color: #24262b;
+  background-color: #ffffff;
+}
+
+@media (max-width: 1260px) {
+  .footer .footer-col {
+    width: 50%;
+  }
+}
+
+@media (max-width: 675px) {
+  .footer .footer-col {
+    width: 100%;
+  }
+}

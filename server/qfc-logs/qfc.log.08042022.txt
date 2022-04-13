@@ -1,0 +1,12 @@
+[2022-04-08 21:59:47] localhost GET / 304 - 3.040 ms 
+[2022-04-08 21:59:48] localhost GET /favicon.ico 404 - 2.869 ms 
+[2022-04-08 22:08:25] localhost GET /api/banner/61efca070a166ac15f35c6f9 304 - 1141.098 ms 
+[2022-04-08 22:11:42] localhost GET / 304 - 1.190 ms 
+[2022-04-08 22:12:27] localhost POST /api/signin 200 - 259.898 ms 
+[2022-04-08 22:15:56] localhost POST /api/banner/6195f66e996a1cb655a4d4fc - - - ms 
+[2022-04-08 22:16:11] localhost POST /api/banner/6195f66e996a1cb655a4d4fc 401 - 229.709 ms 
+[2022-04-08 22:17:25] localhost POST /api/banner/6195f66e996a1cb655a4d4fc - - - ms 
+[2022-04-08 22:19:49] localhost POST /api/banner/6195f66e996a1cb655a4d4fc 201 - 474.136 ms 
+[2022-04-08 22:24:36] localhost PUT /api/banner/625067adf7152ae4899cd2af/6195f66e996a1cb655a4d4fc 200 - 781.536 ms 
+[2022-04-08 22:25:01] localhost PUT /api/banner/625067adf7152ae4899cd2af/6195f66e996a1cb655a4d4fc 200 - 661.095 ms 
+[2022-04-08 22:25:28] localhost DELETE /api/banner/625067adf7152ae4899cd2af/6195f66e996a1cb655a4d4fc 200 - 659.840 ms 

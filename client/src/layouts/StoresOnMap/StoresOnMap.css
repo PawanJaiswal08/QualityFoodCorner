@@ -1,0 +1,17 @@
+.mapbody{
+    background: var(--lightblack);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+
+#map{
+    height: 75%;
+    width: 75%;
+}
+
+.mapboxgl-ctrl-bottom-right {
+    display: none !important;
+ }

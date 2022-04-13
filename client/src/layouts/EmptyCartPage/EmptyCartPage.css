@@ -1,0 +1,64 @@
+.emptycart {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 40%;
+  height: 100vh;
+}
+
+.add-btnn {
+  position: absolute;
+  /* bottom: 0.1vh; */
+  left: 50%;
+  bottom: 1px;
+  transform: translate(-50%, -50%);
+  margin: auto;
+  /* margin-top: 100px; */
+}
+
+.add-btnn h3 {
+  /* font-size: 1.2rem; */
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.add-btnn span {
+  position: relative;
+  display: inline-flex;
+  width: 180px;
+  height: 55px;
+  margin: 0 15px;
+  perspective: 1000px;
+}
+
+.add-btnn span a {
+  font-size: 19px;
+  letter-spacing: 1px;
+  transform-style: preserve-3d;
+  transform: translateZ(-25px);
+  transition: transform 0.25s;
+  font-family: "Montserrat", sans-serif;
+}
+.add-btnn span a:before, .add-btnn span a:after {
+  position: absolute;
+  content: "Go to Menu";
+  height: 55px;
+  width: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid rgb(238, 137, 4);
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+.add-btnn span a:before {
+  color: rgb(252, 2, 2);
+  background: rgb(250, 245, 223);
+  transform: rotateY(0deg) translateZ(25px);
+}
+.add-btnn span a:after {
+  color: rgb(39, 36, 247);
+  transform: rotateX(90deg) translateZ(25px);
+}
+.add-btnn span a:hover {
+  transform: translateZ(-25px) rotateX(-90deg);
+}

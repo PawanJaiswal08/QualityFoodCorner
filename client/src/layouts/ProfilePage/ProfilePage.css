@@ -1,0 +1,80 @@
+.profileOuter{
+    /* background-color: #e4d442; */
+    background-color: var(--lightblack);
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.profileOuter .profilename{
+    color: #F9F9F3;
+}
+
+.profileOuter .profilemail{
+    color: #F9F9F3;
+}
+
+.profileOuter .tittle{
+    color: #F4BE2C;
+}
+
+.profileOuter .profileImage{
+    box-shadow: rgba(255, 255, 255, 0.75) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+
+.profileOuter .row {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+
+/* .profileOuter .boxx{
+    box-shadow: rgb(217, 217, 217) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+} */
+
+.profileOuter .boxxx{
+    font-size: large;
+    color: #F9F9F3;
+    box-shadow: rgba(255, 255, 255, 0.65) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+
+.profileOuter .profile-button {
+    background: #F4BE2C;
+    box-shadow: none;
+    border: none
+}
+
+.profileOuter .profile-button:hover {
+    background: #eaeaea;
+    border: 2px solid #F4BE2C;
+}
+
+.profileOuter .labels {
+    font-size: 15px;
+}
+
+.profileOuter h6 {
+    margin: 0;
+}
+
+.profileOuter .accordion-button:not(.collapsed){
+    color :#000000;
+    background-color: #ffffff;
+}
+
+.profileOuter .accordion-button:focus{
+    border-color: #F4BE2C;
+    box-shadow: 0 0 0 0rem rgba(255, 255, 255);
+}
+
+.profileOuter h3{
+    color: #F4BE2C;
+}
+
+.profileOuter .labels
+{
+    color: #000000 !important;
+}
+
+.profileOuter .accordion-header{
+    font-size: 1.2rem;
+}

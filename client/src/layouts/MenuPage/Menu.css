@@ -1,0 +1,107 @@
+.menubody {
+  position: relative;
+  min-height: 100vh;
+  display: "flex";
+  background: var(--lightblack);
+}
+
+.prod-row {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  margin: 0 0 0 22vw;
+  padding: 0 20px;
+}
+
+@media (max-width: 768px) {
+  .prod-row {
+    margin: 0;
+  }
+}
+
+/* Menu-Sidebar */
+
+.sidebar {
+  position: absolute;
+  width: 23%;
+  background: rgb(28, 28, 28);
+  font-size: 0.65em;
+}
+.sidebar-heading {
+  color: white;
+  text-align: center;
+  font-size: 1.7rem;
+  padding: 10px 10px 35px 10px;
+}
+.navv {
+  margin: 0 15%;
+  text-align: center;
+  font-weight: bold;
+}
+.navv ul {
+  padding: 0px;
+  list-style: none;
+}
+.navv ul li {
+  position: relative;
+  margin: 2.5em 0;
+}
+.navv ul li a {
+  line-height: 5em;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.4em;
+  color: rgb(185, 185, 185);
+  display: block;
+  transition: all ease-out 300ms;
+}
+.navv ul li.active a {
+  color: white;
+}
+.navv ul li:not(.active)::after {
+  opacity: 0.7;
+}
+.navv ul li:not(.active):hover a {
+  color: rgba(255, 255, 255);
+}
+.navv ul li::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 0.3em;
+  background: black;
+  left: 0;
+  bottom: 0;
+  background-image: linear-gradient(to right, #fb7ba2, #fce043);
+}
+
+/* Pagination */
+
+.pagination {
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 6rem auto;
+  color: var(--darkyellow);
+}
+
+.pagination ul {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.pagination li {
+  color: var(--darkblack);
+}
+
+.pagination a {
+  color: var(--darkblack);
+}
+
+.page-item {
+  background-color: yellow;
+  color: var(--darkyellow);
+}
+.page-item .active {
+  background-color: var(--darkyellow) !important;
+  color: var(--darkyellow);
+}

@@ -1,0 +1,19 @@
+/* .ProductsCSV .wp-table tr:nth-child(odd) {
+    background-color: #fff;
+} */
+
+/* .ProductsCSV .wp-table tr:nth-child(even) {
+    background-color: #f1f1f1;
+} */
+
+.ProductsCSV .wp-table tr {
+    border-bottom: 1px solid #b4b4b4;
+}
+
+.ProductsCSV .CSVHeading{
+    color: #e4d442 !important;
+}
+
+.ProductsCSV .CSVlist{
+    color:  #bbbbbb !important;
+}
