@@ -8,6 +8,7 @@ const storeRoutes = require('./../routes/store');
 const offerRoutes = require('./../routes/offer');
 const developerRoutes = require('./../routes/developer');
 const csvRoutes = require('./../routes/csv');
+const payment = require('./../routes/payment')
 
 const Routes = [
     bannerRoutes,
@@ -18,7 +19,8 @@ const Routes = [
     storeRoutes, 
     offerRoutes,
     developerRoutes,
-    csvRoutes
+    csvRoutes,
+    payment
 ]
 
 module.exports = Routes
