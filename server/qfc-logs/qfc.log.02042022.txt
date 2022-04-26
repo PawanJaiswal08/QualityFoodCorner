@@ -208,7 +208,7 @@
 [2022-04-02 12:08:07] localhost GET /api/user/6195f66e996a1cb655a4d4fc 304 - 226.026 ms 
 [2022-04-02 12:08:07] localhost GET /api/user/6195f66e996a1cb655a4d4fc 304 - 225.494 ms 
 [2022-04-02 12:09:54] localhost PUT /api//user/6195f66e996a1cb655a4d4fc/profileImg 200 - 1064.683 ms 
-[2022-04-02 12:10:08] localhost PUT /api/user/checkout/cartItems/6195f66e996a1cb655a4d4fc 200 - 450.967 ms 
+[2022-04-02 12:10:08] localhost PUT /api/user/checkout/cartItem/6195f66e996a1cb655a4d4fc 200 - 450.967 ms 
 [2022-04-02 12:10:27] localhost PUT /api//user/6195f66e996a1cb655a4d4fc/ 200 - 226.016 ms 
 [2022-04-02 12:10:42] localhost GET /api/admin/user/6195f66e996a1cb655a4d4fc 404 - 1.027 ms 
 [2022-04-02 12:10:49] localhost GET /api/user/6195f66e996a1cb655a4d4fc 200 - 225.299 ms 

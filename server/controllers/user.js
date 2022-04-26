@@ -71,7 +71,7 @@ exports.getUserByAdmin = async (req, res) => {
 
         if (!user) {
             return res.status(400).json({
-                error: "NO Admin found in database"
+                error: "No user found in database"
             });
         }
 
@@ -189,7 +189,7 @@ exports.removeFromCartItems = async (req, res) => {
         user.save()
 
         return res.status(200).json({
-            success : "Remove from CartItems"
+            success : "Removed from CartItems"
         });
 
 
