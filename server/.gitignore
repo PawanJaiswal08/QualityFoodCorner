@@ -1,4 +1,5 @@
 # dependencies
 /node_modules
+/qfc-logs
 config.env
 package-lock.json
