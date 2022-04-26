@@ -5,3 +5,7 @@
 [2022-04-26 22:32:32] localhost GET /api/products?limit=10 200 - 761.976 ms 
 [2022-04-26 22:33:16] localhost GET /api/banner/61efca070a166ac15f35c6f9 200 - 1428.918 ms 
 [2022-04-26 22:33:49] localhost GET /api/banner/61efca070a166ac15f35c6f9 200 - 3251.466 ms 
+[2022-04-26 22:51:52] localhost GET /api/categories 200 - 1638.515 ms 
+[2022-04-26 22:52:11] localhost GET /api/products?limit=12 200 - 731.429 ms 
+[2022-04-26 22:52:27] localhost GET /api/offers 200 - 238.032 ms 
+[2022-04-26 22:56:54] localhost GET /api/stores 200 - 4853.774 ms 

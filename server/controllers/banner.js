@@ -127,7 +127,6 @@ exports.createBanner = async (req, res) => {
             const bannerCreated = await banner.save();
 
             if (bannerCreated) {
-			    redisClient.set('banner', JSON.stringify(bannerCreated))
                 return res.status(201).json({ banner: bannerCreated });
             }
             else {
@@ -189,10 +188,7 @@ exports.deleteBanner = async (req, res) => {
         const deletedBanner = await banner.remove()
 
         if (deletedBanner) {
-            return res.status(200).json({
-                message: "Banner Details Deleted Successfully ...",
-                deletedBanner: deletedBanner
-            })
+            return res.status(200).json({ deletedBanner: deletedBanner })
         }
 
     } catch (error) {

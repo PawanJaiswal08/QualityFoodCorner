@@ -277,7 +277,8 @@ exports.createProduct = async (req, res) => {
 		const productCreated = await product.save();
 
 		if (productCreated) {
-			redisClient.set('allproducts', JSON.stringify(productCreated))
+			const products = await Product.find()
+			redisClient.set('allproducts', JSON.stringify(products))
 			res.json(productCreated);
 		}
 		});
@@ -336,9 +337,9 @@ exports.deleteProduct = async (req, res) => {
 		const deletedProduct = await product.remove();
 
 		if (deletedProduct) {
-			return res.status(204).json({
-				message: `Successfully Deleted ${deletedProduct.name} Product`,
-			});
+			const products = await Product.find()
+			redisClient.set('allproducts', JSON.stringify(products))
+			return res.status(204).json({ message: `Successfully Deleted ${deletedProduct.name} Product` });
 		}
 
     } catch (error) {
