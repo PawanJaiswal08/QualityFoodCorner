@@ -8,7 +8,7 @@ import Error404 from "./../../components/Error404/Error404";
 import Loading from "../../components/Loading/Loading";
 import "./../MenuPage/Menu.css";
 import ReactPaginate from "react-paginate";
-const API = process.env.REACT_APP_BACKEND_API;
+// const API = process.env.REACT_APP_BACKEND_API;
 
 function Items({ currentItems }) {
   return (
@@ -45,7 +45,7 @@ const DisplayProductOnSearch = () => {
 		const getProductproduct = async () => {
 		try {
 			const response = await axios.get(
-			`${API}/product/search/${productName}`,
+			`http://localhost:8983/solr/qfc_products_core/select?q=name:${productName}*`,
 			{
 				headers: {
 				Accept: "application/json",
@@ -53,10 +53,10 @@ const DisplayProductOnSearch = () => {
 				},
 			}
 			);
-
+			console.log(response.data);
 			//   console.log(response.data.error);
 			if (response && !response.data.error) {
-			var datanow = response.data;
+			var datanow = response.data.response.docs;
 			!datanow.error ? setData(datanow) : setData([]);
 			setLoading(false);
 			}
