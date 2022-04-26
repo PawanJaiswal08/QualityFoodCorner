@@ -4,6 +4,7 @@ const Category = require("../models/category");
 const formidable = require("formidable");
 const _ = require("lodash");
 const fs = require("fs");
+const { redisClient } = require('./../assets/redis')
 
 // @desc Get Product By ID
 // @route GET /api/product/:productId
@@ -79,26 +80,29 @@ exports.getProductByName = async (req, res, next, name) => {
 // @route GET /api/products
 // @access Public
 exports.getAllProducts = async (req, res) => {
+
+	const data = await redisClient.get(`allproducts?${req.query.limit}`)
+    
+    if (data != null) {
+        return res.json(JSON.parse(data))
+    }else {
+		try {
+			let limit = req.query.limit ? parseInt(req.query.limit) : 100;
+			let sortBy = req.query.sortBy ? req.query.sortBy : "_id";
 	
-	try {
-		let limit = req.query.limit ? parseInt(req.query.limit) : 100;
-		let sortBy = req.query.sortBy ? req.query.sortBy : "_id";
-
-		const products = await Product.find()
-										.populate("category")
-										.select("-photo")
-										.sort([[sortBy, "asc"]])
-										.limit(limit);
-
-		if (products) {
-			return res.json({ 
-				products: products
-			});
+			const products = await Product.find()
+											.populate("category")
+											.select("-photo")
+											.sort([[sortBy, "asc"]])
+											.limit(limit);
+	
+			if (products) {
+                await redisClient.set(`allproducts?${req.query.limit}`, JSON.stringify(products))
+				return res.json({ products: products });
+			}
+		} catch (error) {
+			return res.status(400).json({ error: "No products found" });
 		}
-	} catch (error) {
-		return res.status(400).json({
-			error: "No products found",
-		});
 	}
 };
 
@@ -273,6 +277,7 @@ exports.createProduct = async (req, res) => {
 		const productCreated = await product.save();
 
 		if (productCreated) {
+			redisClient.set('allproducts', JSON.stringify(productCreated))
 			res.json(productCreated);
 		}
 		});

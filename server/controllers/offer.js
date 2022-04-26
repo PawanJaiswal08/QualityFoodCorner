@@ -5,28 +5,28 @@ const _ = require('lodash');
 const { uploadFile } = require('./../assets/s3')
 const util = require('util');
 const unlinkFile = util.promisify(fs.unlink)
+const { redisClient } = require('./../assets/redis')
 
 // @desc Get All Offers
 // @route GET /api/offer/all
 // @access Public
 exports.getAllOffers = async (req, res) => {
+
+    const data = await redisClient.get('alloffer')
     
-    try {
-        
-        // const offers = await Offer.find({}, { name: 1, feature: 1, isActive: 1 });
-        const offers = await Offer.find();
-
-        if(offers){
-            return res.status(200).json({
-                offers: offers
-            })
+    if (data != null) {
+        return res.json(JSON.parse(data))
+    } else {
+        try {
+            // const offers = await Offer.find({}, { name: 1, feature: 1, isActive: 1 });
+            const offers = await Offer.find();
+            if(offers){
+                await redisClient.set('alloffer', JSON.stringify(offers))
+                return res.status(200).json({ offers: offers })
+            }
+        } catch (error) {
+            return res.status(400).json({ error: error });
         }
-
-
-    } catch (error) {
-        return res.status(400).json({
-            error: error
-        });
     }
 }
 
