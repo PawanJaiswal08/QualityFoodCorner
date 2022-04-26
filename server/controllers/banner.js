@@ -2,6 +2,7 @@ const Banner = require('../models/banner');
 const formidable = require('formidable');
 const fs = require('fs');
 const { validationResult } = require('express-validator');
+const { redisClient } = require('./../assets/redis')
 
 // @desc Get Banner By ID
 // @route GET /api/user/:userId
@@ -34,25 +35,24 @@ exports.getBannerById = async (req, res, next, id) => {
 // @access Public
 exports.getBanner = async (req, res) => {
 
-    try {
-
-        const banner = req.banner
-
-        if (!banner) {
-            return res.status(400).json({
-                error: "No banner found in database"
-            });
+    const data = await redisClient.get(`banner`)
+    
+    if (data != null) {
+        return res.json(JSON.parse(data))
+    } else {
+        try {
+            const banner = req.banner
+            if (!banner) {
+                return res.status(400).json({ error: "No banner found in database" });
+            }
+            await redisClient.set(`banner`, JSON.stringify(banner))
+            return res.status(200).json({ banner: banner });
+        } catch (error) {
+            return res.status(400).json({ error: "No banner found in database" });
         }
-
-        return res.status(200).json({
-            banner: banner
-        });
-        
-    } catch (error) {
-        return res.status(400).json({
-            error: "No banner found in database"
-        });
     }
+
+
 }
 
 // @desc Create a Banner
@@ -127,10 +127,7 @@ exports.createBanner = async (req, res) => {
             const bannerCreated = await banner.save();
 
             if (bannerCreated) {
-                return res.status(201).json({
-                    message: "Banner Details Added Successfully ...",
-                    banner: bannerCreated
-                });
+                return res.status(201).json({ banner: bannerCreated });
             }
             else {
                 return res.status(500).json({error: "Failed to Add"});
@@ -140,9 +137,7 @@ exports.createBanner = async (req, res) => {
         
 
     } catch (error) {
-        return res.status(400).json({
-            error: 'Unable to save Banner Details'
-        })
+        return res.status(400).json({ error: 'Unable to save Banner Details'})
     }
 }
 
@@ -193,10 +188,7 @@ exports.deleteBanner = async (req, res) => {
         const deletedBanner = await banner.remove()
 
         if (deletedBanner) {
-            return res.status(200).json({
-                message: "Banner Details Deleted Successfully ...",
-                deletedBanner: deletedBanner
-            })
+            return res.status(200).json({ deletedBanner: deletedBanner })
         }
 
     } catch (error) {

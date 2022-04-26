@@ -3,7 +3,6 @@ const { ObjectId } = require('mongodb');
 const Category = require('../models/category');
 const { validationResult } = require('express-validator');
 const { redisClient } = require('./../assets/redis')
-multi = redisClient.multi();
 
 // @desc Get a Category By Name
 // @route GET /api/category/:catergory

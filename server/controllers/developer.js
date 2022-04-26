@@ -91,6 +91,8 @@ exports.createDeveloper = async (req, res) => {
         const developerCreated = await developer.save()
 
         if (developerCreated) {
+            const developers = await Developer.find()
+			redisClient.set('alldevelopers', JSON.stringify(developers))
             return res.status(201).json(developerCreated)
         }
 
@@ -114,20 +116,16 @@ exports.deleteDeveloper = async (req, res) => {
         const deletedDeveloper = await developer.remove();
 
         if (deletedDeveloper) {
-            return res.json({
-                message: `Successfully Deleted Team Member`
-            })
+            const developers = await Developer.find()
+			redisClient.set('alldevelopers', JSON.stringify(developers))
+            return res.json({ message: `Successfully Deleted Team Member` })
         }
         else {
             return res.status(500).json({error: "Failed to Register"});
         }
     
     } catch (error) {
-
         console.error(error);
-        
-        return res.status(400).json({
-            error: 'Failed to delete'
-        })
+        return res.status(400).json({ error: 'Failed to delete' })
     }
 }

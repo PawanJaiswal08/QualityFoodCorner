@@ -21,7 +21,7 @@ exports.getAllOffers = async (req, res) => {
             // const offers = await Offer.find({}, { name: 1, feature: 1, isActive: 1 });
             const offers = await Offer.find();
             if(offers){
-                await redisClient.set('alloffer', JSON.stringify(offers))
+                await redisClient.set('alloffers', JSON.stringify(offers))
                 return res.status(200).json({ offers: offers })
             }
         } catch (error) {
@@ -59,17 +59,14 @@ exports.createOffer = async (req, res) => {
         // }
 
         const offer = await Offer.create({ name, feature, offerImage, isActive });
-
-        res.status(201).json({
-            message: 'Offer Created',
-            offer: offer
-        })
+        
+        const offers = await Offer.find()
+        redisClient.set('alloffers', JSON.stringify(offers))
+        res.status(201).json({ offer: offer })
 
     } catch (error) {
         console.log(error);
-        return res.status(400).json({
-            error: error
-        })
+        return res.status(400).json({ error: error })
     }
 }
 
@@ -127,15 +124,13 @@ exports.deleteOffer = async(req, res) => {
         const deletedOffer = await offer.deleteOne();
 
         if (deletedOffer) {
-            return res.json({
-                message: `Successfully Deleted Offer`,
-            });
+            const offers = await Offer.find()
+			redisClient.set('alloffers', JSON.stringify(offers))
+            return res.json({ message: `Successfully Deleted Offer` });
         }
 
     } catch (error) {
-
-        return res.status(400).json({
-            error: `Failed to delete this offer`,
-        });
+        console.log(error);
+        return res.status(400).json({ error: `Failed to delete this offer` });
     }
 };
