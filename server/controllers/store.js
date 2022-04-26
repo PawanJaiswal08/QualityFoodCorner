@@ -30,7 +30,7 @@ exports.getAllStores = async (req, res) => {
     const data = await redisClient.get('allstores')
 
     if (data != null) {
-        return res.json(JSON.parse(data))
+        return res.json({stores: JSON.parse(data)})
     } else {
         try {
             const stores = await Store.find();

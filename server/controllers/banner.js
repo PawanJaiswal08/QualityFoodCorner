@@ -38,7 +38,7 @@ exports.getBanner = async (req, res) => {
     const data = await redisClient.get(`banner`)
     
     if (data != null) {
-        return res.json(JSON.parse(data))
+        return res.json({banner: JSON.parse(data)})
     } else {
         try {
             const banner = req.banner
@@ -51,8 +51,6 @@ exports.getBanner = async (req, res) => {
             return res.status(400).json({ error: "No banner found in database" });
         }
     }
-
-
 }
 
 // @desc Create a Banner
