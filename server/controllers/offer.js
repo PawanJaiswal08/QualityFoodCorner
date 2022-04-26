@@ -15,7 +15,7 @@ exports.getAllOffers = async (req, res) => {
     const data = await redisClient.get('alloffer')
     
     if (data != null) {
-        return res.json(JSON.parse(data))
+        return res.json({offers: JSON.parse(data)})
     } else {
         try {
             // const offers = await Offer.find({}, { name: 1, feature: 1, isActive: 1 });

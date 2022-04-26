@@ -38,7 +38,7 @@ const ListAllStore = () => {
 
 		getAllStores()
 
-	})
+	},[]) // eslint-disable-line react-hooks/exhaustive-deps
 
     function showStores(start,end){
         

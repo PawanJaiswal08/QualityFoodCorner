@@ -13,7 +13,7 @@ exports.getAllDevelopers = async (req, res) => {
     const data = await redisClient.get('alldevelopers')
     
     if (data != null) {
-        return res.json(JSON.parse(data))
+        return res.json({developers: JSON.parse(data)})
     } else {
         try {
             const developers = await Developer.find();

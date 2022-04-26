@@ -38,7 +38,7 @@ const ListAllDeveloper = () => {
 
 		getAllDeveloper()
 
-	})
+	},[]) // eslint-disable-line react-hooks/exhaustive-deps
 
     function showDevelopers(start,end){
         

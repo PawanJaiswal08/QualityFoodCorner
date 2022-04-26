@@ -38,7 +38,7 @@ const ListAllCategories = () => {
 
 		getAllCategories()
 
-	})
+	}, []) // eslint-disable-line react-hooks/exhaustive-deps
 
     function showCategories(start,end){
         
