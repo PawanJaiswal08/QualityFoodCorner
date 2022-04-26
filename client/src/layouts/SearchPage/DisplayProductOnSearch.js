@@ -81,7 +81,7 @@ const DisplayProductOnSearch = () => {
 	useEffect(() => {
 		// Fetch items from another resources.
 		const endOffset = itemOffset + itemsPerPage;
-		console.log(data);
+		// console.log(data);
 		// console.log(`Loading items from ${itemOffset} to ${endOffset}`);
 		setCurrentItems(data.slice(itemOffset, endOffset));
 		setPageCount(Math.ceil(data.length / itemsPerPage));

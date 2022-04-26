@@ -39,7 +39,7 @@ const ListAllOffers = () => {
 
 		getAllOffers()
 
-	})
+	},[]) // eslint-disable-line react-hooks/exhaustive-deps
 
     function showOffers(start, end){
         

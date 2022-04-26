@@ -62,7 +62,7 @@ const Home = () => {
 		getBanner()
 		getAllOffers()
 
-	})
+	}, []) // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <> 

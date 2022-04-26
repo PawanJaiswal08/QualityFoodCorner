@@ -84,7 +84,7 @@ exports.getAllProducts = async (req, res) => {
 	const data = await redisClient.get(`allproducts?${req.query.limit}`)
     
     if (data != null) {
-        return res.json(JSON.parse(data))
+        return res.json({products: JSON.parse(data)})
     }else {
 		try {
 			let limit = req.query.limit ? parseInt(req.query.limit) : 100;
@@ -97,7 +97,7 @@ exports.getAllProducts = async (req, res) => {
 											.limit(limit);
 	
 			if (products) {
-                await redisClient.set(`allproducts?${req.query.limit}`, JSON.stringify(products))
+                // await redisClient.set(`allproducts?${req.query.limit}`, JSON.stringify(products))
 				return res.json({ products: products });
 			}
 		} catch (error) {
