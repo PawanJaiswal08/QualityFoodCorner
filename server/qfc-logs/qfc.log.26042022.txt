@@ -1,0 +1,7 @@
+[2022-04-26 22:23:52] localhost GET /api/banner/61efca070a166ac15f35c6f9 - - - ms 
+[2022-04-26 22:28:19] localhost GET /api/banner/61efca070a166ac15f35c6f9 200 - 4306.941 ms 
+[2022-04-26 22:31:00] localhost GET /api/banner/61efca070a166ac15f35c6f9 200 - 12935.553 ms 
+[2022-04-26 22:32:10] localhost GET /api/banner/61efca070a166ac15f35c6f9 200 - 1669.795 ms 
+[2022-04-26 22:32:32] localhost GET /api/products?limit=10 200 - 761.976 ms 
+[2022-04-26 22:33:16] localhost GET /api/banner/61efca070a166ac15f35c6f9 200 - 1428.918 ms 
+[2022-04-26 22:33:49] localhost GET /api/banner/61efca070a166ac15f35c6f9 200 - 3251.466 ms 
