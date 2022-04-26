@@ -14963,7 +14963,7 @@
 [2022-04-04 20:57:56] localhost GET /api/products 200 - 471.386 ms 
 [2022-04-04 20:57:56] localhost GET /api/products 200 - 450.192 ms 
 [2022-04-04 20:58:00] localhost GET /api/products 200 - 3830.593 ms 
-[2022-04-04 20:58:04] localhost PUT /api/user/checkout/cartItems/6195f66e996a1cb655a4d4fc 200 - 1085.765 ms 
+[2022-04-04 20:58:04] localhost PUT /api/user/checkout/cartItem/6195f66e996a1cb655a4d4fc 200 - 1085.765 ms 
 [2022-04-04 20:58:05] localhost GET /api/banner/61efca070a166ac15f35c6f9 304 - 1177.989 ms 
 [2022-04-04 20:58:06] localhost GET /api/offers 304 - 1628.873 ms 
 [2022-04-04 20:59:21] localhost GET /api/banner/61efca070a166ac15f35c6f9 304 - 1187.071 ms 
