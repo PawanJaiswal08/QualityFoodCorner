@@ -3,3 +3,4 @@
 /qfc-logs
 config.env
 package-lock.json
+Dockerfile

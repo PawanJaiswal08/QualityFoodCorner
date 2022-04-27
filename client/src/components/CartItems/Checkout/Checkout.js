@@ -116,7 +116,6 @@ const Checkout = (props) => {
 		script.onload = async () => {
 		try {
 			const {user, token} = isAuthenticated()
-			console.log(user, token);
 			setLoading(true);
 			const amountt = parseInt(checkoutTotal) * 100;
 
@@ -129,8 +128,6 @@ const Checkout = (props) => {
 						},
 					}
 			);
-
-			console.log(result);
 
 			const { amount, id: order_id, currency } = result.data;
 			const { data: { key: razorpayKey } } = await axios.get(`${API}/get-razorpay-key`, 
@@ -239,11 +236,10 @@ const Checkout = (props) => {
 			<div className="sub-total">Total</div>
 			<div className="sub-total">₹{finaltotal}</div>
 		</div>
-		<button className="checkout-btn" type="button" onClick={onCheckOut}>
+		<button className="checkout-btn" onClick={loadRazorpay}>
 			<div className="checkout">Checkout</div>
 			<div className="checkout-amount">₹{checkoutTotal}</div>
 		</button>
-		<button onClick={loadRazorpay}>Razorpay</button>
 		</div>
 	);
 };

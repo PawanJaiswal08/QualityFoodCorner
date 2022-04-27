@@ -37,6 +37,6 @@ app.get('/daily-log-file/:filename', (req, res) => {
     res.sendFile(path.join((__dirname + `./../qfc-logs/${filename}`)))
 })
 
-app.listen(PORT, () => {
+module.exports = app.listen(PORT, () => {
     console.log(`Server is running at port ${PORT}`);
 })
