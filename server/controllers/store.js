@@ -27,8 +27,12 @@ exports.getStoreById = async (req, res, next, id) => {
 // @access Public
 exports.getAllStores = async (req, res) => {
 
-    const data = await redisClient.get('allstores')
-
+    var data;
+    await redisClient.get(`allstores`,(err, redisdata) => {
+        if (err) throw err;
+        data = redisdata
+    });
+    
     if (data != null) {
         return res.json({stores: JSON.parse(data)})
     } else {

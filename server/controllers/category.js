@@ -203,7 +203,11 @@ exports.deleteCategory = async (req, res) => {
 
 exports.getAllCategory = async (req, res) => {
 
-    const data = await redisClient.get('allcategories')
+    var data;
+    await redisClient.get(`allcategories`,(err, redisdata) => {
+        if (err) throw err;
+        data = redisdata
+    });
 
     if (data != null) {
         return res.json({categories: JSON.parse(data)})

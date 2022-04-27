@@ -12,10 +12,13 @@ const { redisClient } = require('./../assets/redis')
 // @access Public
 exports.getAllOffers = async (req, res) => {
 
-    const data = await redisClient.get('alloffer')
-    
+    var data;
+    await redisClient.get('alloffers', (err, redisdata) => {
+        if (err) throw err;
+        data = redisdata
+    });
     if (data != null) {
-        return res.json({offers: JSON.parse(data)})
+        return res.json({ offers: JSON.parse(data)})
     } else {
         try {
             // const offers = await Offer.find({}, { name: 1, feature: 1, isActive: 1 });

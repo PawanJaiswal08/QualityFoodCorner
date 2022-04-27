@@ -10,7 +10,11 @@ const { redisClient } = require('./../assets/redis')
 // @access Public
 exports.getAllDevelopers = async (req, res) => {
 
-    const data = await redisClient.get('alldevelopers')
+    var data;
+    await redisClient.get(`alldevelopers`,(err, redisdata) => {
+        if (err) throw err;
+        data = redisdata
+    });
     
     if (data != null) {
         return res.json({developers: JSON.parse(data)})

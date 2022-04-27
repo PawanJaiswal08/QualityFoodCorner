@@ -35,7 +35,11 @@ exports.getBannerById = async (req, res, next, id) => {
 // @access Public
 exports.getBanner = async (req, res) => {
 
-    const data = await redisClient.get(`banner`)
+    var data;
+    await redisClient.get(`banner`,(err, redisdata) => {
+        if (err) throw err;
+        data = redisdata
+    });
     
     if (data != null) {
         return res.json({banner: JSON.parse(data)})
